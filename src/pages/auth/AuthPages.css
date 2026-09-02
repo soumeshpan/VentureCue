@@ -1,0 +1,45 @@
+/* ============================================================
+   AUTH PAGES (LOGIN & SIGNUP)
+   ============================================================ */
+
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.auth-page__heading h1 {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-1);
+}
+
+.auth-page__heading p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: var(--leading-relaxed);
+}
+
+.auth-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.auth-page__switch {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.auth-page__switch a {
+  color: var(--text-brand);
+  font-weight: var(--weight-medium);
+}
+
+.auth-page__switch a:hover {
+  color: var(--brand-primary-light);
+}

@@ -1,0 +1,269 @@
+/* ============================================================
+   RESPONSIBLE AI MODAL STYLES
+   ============================================================ */
+
+.rai-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--space-4);
+}
+
+.rai-card {
+  background: var(--c-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2xl);
+  max-width: 780px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-xl), 0 0 32px rgba(79, 124, 255, 0.1);
+  overflow: hidden;
+}
+
+.rai-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-6) var(--space-8);
+  border-bottom: 1px solid var(--border-default);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.rai-header__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.rai-header__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-xl);
+  background: rgba(79, 124, 255, 0.12);
+  color: var(--brand-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rai-header h2 {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  margin: 0 0 2px 0;
+}
+
+.rai-header p {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.rai-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.rai-close-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+}
+
+.rai-body {
+  padding: var(--space-6) var(--space-8);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Notice Banner */
+.rai-notice-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: rgba(79, 124, 255, 0.08);
+  border: 1px solid rgba(79, 124, 255, 0.25);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4) var(--space-5);
+}
+
+.rai-notice-icon {
+  color: var(--brand-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.rai-notice-banner strong {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.rai-notice-banner p {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* Capabilities Grid */
+.rai-capabilities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.rai-cap-col {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.rai-cap-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.rai-cap-col--does .rai-cap-header {
+  color: var(--status-success);
+}
+
+.rai-cap-col--does-not .rai-cap-header {
+  color: var(--status-danger);
+}
+
+.rai-cap-header h3 {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  margin: 0;
+}
+
+.rai-cap-col ul {
+  margin: 0;
+  padding-left: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Section */
+.rai-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.rai-section h4 {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.rai-section-desc {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.rai-hierarchy-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-3);
+}
+
+.rai-step {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.rai-step__num {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-full);
+  background: var(--brand-primary);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rai-step--inference .rai-step__num {
+  background: var(--brand-violet);
+}
+
+.rai-step strong {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.rai-step span {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: var(--leading-tight);
+}
+
+.rai-privacy-list {
+  margin: 0;
+  padding-left: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.rai-footer {
+  padding: var(--space-4) var(--space-8);
+  border-top: 1px solid var(--border-default);
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+@media (max-width: 680px) {
+  .rai-capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+}

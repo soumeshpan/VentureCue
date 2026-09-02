@@ -1,0 +1,80 @@
+/* ============================================================
+   SESSION LAYOUT
+   Full-screen immersive conversation workspace
+   ============================================================ */
+
+.session-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--c-base);
+}
+
+.session-layout__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--c-surface);
+  flex-shrink: 0;
+  height: var(--header-height);
+  z-index: var(--z-raised);
+}
+
+.session-layout__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.session-layout__logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #4f7cff 0%, #7c4dff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.session-layout__brand-name {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-tight);
+}
+
+.session-layout__exit {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  background: var(--c-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition:
+    background   var(--transition-fast),
+    color        var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.session-layout__exit:hover {
+  background: var(--status-danger-dim);
+  color: var(--text-danger);
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+.session-layout__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}

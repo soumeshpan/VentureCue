@@ -1,0 +1,156 @@
+/* ============================================================
+   MICROPHONE & CONVERSATION INPUT CONTROLS
+   ============================================================ */
+
+.mic-control-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.mic-live-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 6px 14px;
+  background: rgba(0, 203, 168, 0.1);
+  border: 1px solid rgba(0, 203, 168, 0.3);
+  border-radius: var(--radius-full);
+  align-self: center;
+}
+
+.mic-live-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--status-success);
+  box-shadow: 0 0 10px var(--status-success);
+  animation: pulse-dot 1.2s ease infinite;
+}
+
+.mic-live-text {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--status-success);
+  letter-spacing: var(--tracking-wide);
+}
+
+.mic-live-waves {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 14px;
+}
+
+.live-bar {
+  width: 2.5px;
+  background: var(--status-success);
+  border-radius: var(--radius-full);
+  animation: live-bar-bounce 0.6s ease-in-out infinite alternate;
+}
+
+.bar-a { height: 6px; animation-delay: 0.1s; }
+.bar-b { height: 12px; animation-delay: 0.25s; }
+.bar-c { height: 8px; animation-delay: 0.15s; }
+.bar-d { height: 14px; animation-delay: 0.3s; }
+
+@keyframes live-bar-bounce {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1.3); }
+}
+
+@keyframes pulse-dot {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.3); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.mic-error-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-warning);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+}
+
+/* ----------------------------------------------------------
+   INPUT BAR ROW
+   ---------------------------------------------------------- */
+
+.mic-input-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 6px;
+  background: var(--c-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.mic-input-box:focus-within {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.15);
+}
+
+.mic-button {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-lg);
+  background: var(--c-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.mic-button:hover:not(:disabled) {
+  border-color: var(--brand-primary);
+  color: var(--brand-primary-light);
+  background: var(--c-overlay);
+}
+
+.mic-button--recording {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border-color: var(--status-danger) !important;
+  color: var(--status-danger) !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.35);
+  animation: mic-pulse 1.4s infinite;
+}
+
+@keyframes mic-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.mic-input-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.mic-text-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  padding: 8px 10px;
+  outline: none;
+}
+
+.mic-text-input::placeholder {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}

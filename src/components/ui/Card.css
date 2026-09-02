@@ -1,0 +1,111 @@
+/* ============================================================
+   CARD COMPONENT
+   Consistent surface containers
+   ============================================================ */
+
+.card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  transition:
+    border-color  var(--transition-base),
+    box-shadow    var(--transition-base),
+    transform     var(--transition-base),
+    background    var(--transition-base);
+  position: relative;
+}
+
+/* ----------------------------------------------------------
+   PADDING
+   ---------------------------------------------------------- */
+
+.card--pad-none { padding: 0; }
+.card--pad-sm   { padding: var(--space-4); }
+.card--pad-md   { padding: var(--space-6); }
+.card--pad-lg   { padding: var(--space-8); }
+
+/* ----------------------------------------------------------
+   VARIANTS
+   ---------------------------------------------------------- */
+
+.card--default {
+  background: var(--c-surface);
+  border-color: var(--border-subtle);
+}
+
+.card--elevated {
+  background: var(--c-elevated);
+  border-color: var(--border-default);
+  box-shadow: var(--shadow-sm);
+}
+
+.card--glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-color: var(--glass-border);
+}
+
+.card--brand {
+  background: linear-gradient(
+    135deg,
+    rgba(79, 124, 255, 0.08) 0%,
+    rgba(124, 77, 255, 0.06) 100%
+  );
+  border-color: rgba(79, 124, 255, 0.20);
+}
+
+/* Discovery module card */
+.card--discovery-module {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 203, 168, 0.06) 0%,
+    var(--c-elevated) 60%
+  );
+  border-color: rgba(0, 203, 168, 0.15);
+}
+
+/* Pitch module card */
+.card--pitch-module {
+  background: linear-gradient(
+    135deg,
+    rgba(124, 77, 255, 0.07) 0%,
+    var(--c-elevated) 60%
+  );
+  border-color: rgba(124, 77, 255, 0.18);
+}
+
+/* ----------------------------------------------------------
+   HOVERABLE
+   Lift + border brightening — no glow per design brief
+   ---------------------------------------------------------- */
+
+.card--hoverable:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card--hoverable.card--discovery-module:hover {
+  border-color: rgba(0, 203, 168, 0.28);
+}
+
+.card--hoverable.card--pitch-module:hover {
+  border-color: rgba(124, 77, 255, 0.30);
+}
+
+/* ----------------------------------------------------------
+   CLICKABLE
+   ---------------------------------------------------------- */
+
+.card--clickable {
+  cursor: pointer;
+}
+
+.card--clickable:hover {
+  border-color: var(--border-strong);
+}
+
+.card--clickable:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}

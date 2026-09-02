@@ -1,0 +1,247 @@
+/* ============================================================
+   VENTURECUE DESIGN TOKENS v2
+   Premium dark SaaS design system
+   8px base spacing · Electric blue accent · Dark-first
+   ============================================================ */
+
+:root {
+
+  /* ----------------------------------------------------------
+     COLOR SYSTEM
+     ---------------------------------------------------------- */
+
+  /* Base surfaces — blue-charcoal dark palette */
+  --c-base:      #090c12;
+  --c-surface:   #0d1117;
+  --c-elevated:  #131c28;
+  --c-overlay:   #192334;
+  --c-hover:     #1e2b40;
+
+  /* Legacy aliases (used in existing components) */
+  --bg-base:     var(--c-base);
+  --bg-surface:  var(--c-surface);
+  --bg-elevated: var(--c-elevated);
+  --bg-overlay:  var(--c-overlay);
+  --bg-hover:    var(--c-hover);
+
+  /* ----------------------------------------------------------
+     BRAND COLORS
+     ---------------------------------------------------------- */
+
+  /* Electric blue — primary brand */
+  --brand-primary:      #4f7cff;
+  --brand-primary-light: #7a9fff;
+  --brand-primary-dim:  rgba(79, 124, 255, 0.10);
+  --brand-primary-glow: rgba(79, 124, 255, 0.28);
+
+  /* Violet — secondary brand, used for pitch module */
+  --brand-violet:       #7c4dff;
+  --brand-violet-dim:   rgba(124, 77, 255, 0.10);
+
+  /* Cyan — listening state, customer discovery accent */
+  --brand-secondary:    #00cba8;
+  --brand-secondary-dim: rgba(0, 203, 168, 0.10);
+  --brand-secondary-glow: rgba(0, 203, 168, 0.30);
+
+  /* Legacy aliases */
+  --brand-primary-glow: rgba(79, 124, 255, 0.28);
+
+  /* ----------------------------------------------------------
+     BORDERS
+     ---------------------------------------------------------- */
+
+  --border-subtle:  rgba(255, 255, 255, 0.05);
+  --border-default: rgba(255, 255, 255, 0.09);
+  --border-strong:  rgba(255, 255, 255, 0.16);
+  --border-brand:   rgba(79, 124, 255, 0.30);
+  --border-cyan:    rgba(0, 203, 168, 0.25);
+
+  /* ----------------------------------------------------------
+     TEXT
+     ---------------------------------------------------------- */
+
+  --text-primary:   #edf1f9;
+  --text-secondary: #7a8a9e;
+  --text-muted:     #3f4e63;
+  --text-inverse:   #090c12;
+  --text-brand:     #7a9fff;
+  --text-success:   #34d399;
+  --text-warning:   #fbbf24;
+  --text-danger:    #f87171;
+
+  /* ----------------------------------------------------------
+     STATUS COLORS
+     ---------------------------------------------------------- */
+
+  --status-success:     #10b981;
+  --status-success-dim: rgba(16, 185, 129, 0.12);
+  --status-warning:     #f59e0b;
+  --status-warning-dim: rgba(245, 158, 11, 0.12);
+  --status-danger:      #ef4444;
+  --status-danger-dim:  rgba(239, 68, 68, 0.12);
+  --status-info:        #3b82f6;
+  --status-info-dim:    rgba(59, 130, 246, 0.12);
+
+  /* ----------------------------------------------------------
+     AVATAR STATE TOKENS
+     Glow used ONLY for avatar state indication
+     ---------------------------------------------------------- */
+
+  --avatar-idle-ring:      rgba(79, 124, 255, 0.18);
+  --avatar-idle-glow:      rgba(79, 124, 255, 0.10);
+  --avatar-listening-ring: rgba(0, 203, 168, 0.40);
+  --avatar-listening-glow: rgba(0, 203, 168, 0.20);
+  --avatar-thinking-ring:  rgba(245, 158, 11, 0.30);
+  --avatar-thinking-glow:  rgba(245, 158, 11, 0.12);
+  --avatar-speaking-ring:  rgba(79, 124, 255, 0.50);
+  --avatar-speaking-glow:  rgba(79, 124, 255, 0.22);
+  --avatar-error-ring:     rgba(239, 68, 68, 0.40);
+  --avatar-error-glow:     rgba(239, 68, 68, 0.15);
+
+  /* Legacy avatar vars */
+  --avatar-idle:      var(--avatar-idle-ring);
+  --avatar-listening: var(--avatar-listening-ring);
+  --avatar-thinking:  var(--avatar-thinking-ring);
+  --avatar-speaking:  var(--avatar-speaking-ring);
+  --avatar-error:     var(--avatar-error-ring);
+
+  /* ----------------------------------------------------------
+     SPACING — 8px base grid
+     ---------------------------------------------------------- */
+
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  28px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY
+     ---------------------------------------------------------- */
+
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Size scale */
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-md:   16px;
+  --text-lg:   18px;
+  --text-xl:   20px;
+  --text-2xl:  24px;
+  --text-3xl:  30px;
+  --text-4xl:  38px;
+  --text-5xl:  50px;
+  --text-6xl:  64px;
+
+  /* Weight scale */
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-extrabold: 800;
+
+  /* Line heights */
+  --leading-none:    1;
+  --leading-tight:   1.15;
+  --leading-snug:    1.3;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+  --leading-loose:   1.8;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide:   0.04em;
+  --tracking-wider:  0.08em;
+
+  /* ----------------------------------------------------------
+     BORDER RADIUS
+     ---------------------------------------------------------- */
+
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   18px;
+  --radius-2xl:  24px;
+  --radius-3xl:  32px;
+  --radius-full: 9999px;
+
+  /* ----------------------------------------------------------
+     SHADOWS
+     ---------------------------------------------------------- */
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.40);
+  --shadow-sm: 0 2px 6px  rgba(0, 0, 0, 0.50);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.60);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.70);
+  --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.80);
+
+  /* Glow shadows — used sparingly per brief */
+  --shadow-glow-brand:   0 0 0 1px rgba(79, 124, 255, 0.15),
+                         0 0 24px rgba(79, 124, 255, 0.28);
+  --shadow-glow-brand-lg: 0 0 0 1px rgba(79, 124, 255, 0.20),
+                          0 0 40px rgba(79, 124, 255, 0.35),
+                          0 0 80px rgba(79, 124, 255, 0.12);
+  --shadow-glow-cyan:    0 0 0 1px rgba(0, 203, 168, 0.15),
+                         0 0 24px rgba(0, 203, 168, 0.30);
+  --shadow-glow-success: 0 0 20px rgba(16, 185, 129, 0.25);
+  --shadow-glow-danger:  0 0 20px rgba(239, 68, 68, 0.25);
+
+  /* ----------------------------------------------------------
+     TRANSITIONS
+     ---------------------------------------------------------- */
+
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 360ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ----------------------------------------------------------
+     Z-INDEX
+     ---------------------------------------------------------- */
+
+  --z-base:    0;
+  --z-raised:  10;
+  --z-overlay: 100;
+  --z-modal:   200;
+  --z-toast:   300;
+  --z-tooltip: 400;
+
+  /* ----------------------------------------------------------
+     LAYOUT
+     ---------------------------------------------------------- */
+
+  --sidebar-width: 240px;
+  --content-max:   900px;
+  --content-wide:  1100px;
+  --header-height: 56px;
+
+  /* ----------------------------------------------------------
+     GLASS SYSTEM
+     ---------------------------------------------------------- */
+
+  --glass-bg:     rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.07);
+  --glass-blur:   blur(20px);
+
+  /* ----------------------------------------------------------
+     DISCOVERY / PITCH MODULE IDENTITY
+     ---------------------------------------------------------- */
+
+  --module-discovery-accent: var(--brand-secondary);
+  --module-discovery-dim:    var(--brand-secondary-dim);
+  --module-pitch-accent:     var(--brand-violet);
+  --module-pitch-dim:        var(--brand-violet-dim);
+}

@@ -1,0 +1,179 @@
+/* ============================================================
+   FORM FIELD / INPUT / TEXTAREA COMPONENT STYLES
+   Robust, production-quality vertical form layouts
+   ============================================================ */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-field__label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+}
+
+.form-field__required {
+  color: var(--text-brand);
+  font-weight: var(--weight-bold);
+}
+
+.form-field__hint {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  line-height: var(--leading-snug);
+  margin-top: 2px;
+}
+
+.form-field__error {
+  font-size: var(--text-xs);
+  color: var(--text-danger);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  line-height: var(--leading-snug);
+  margin-top: 2px;
+}
+
+/* ----------------------------------------------------------
+   INPUT WRAPPER (for icons)
+   ---------------------------------------------------------- */
+
+.form-field__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-field__icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+  z-index: 1;
+}
+
+.form-field:focus-within .form-field__icon {
+  color: var(--brand-primary);
+}
+
+/* ----------------------------------------------------------
+   INPUT ELEMENT
+   ---------------------------------------------------------- */
+
+.form-field__input {
+  width: 100% !important;
+  min-width: 100%;
+  box-sizing: border-box !important;
+  height: 44px;
+  background: var(--c-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 42px;
+  padding: 0 var(--space-4);
+  outline: none;
+  transition:
+    border-color  var(--transition-fast),
+    box-shadow    var(--transition-fast),
+    background    var(--transition-fast);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-field__input--has-icon {
+  padding-left: 42px !important;
+}
+
+.form-field__input::placeholder {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.form-field__input:hover:not(:disabled) {
+  border-color: var(--border-strong);
+}
+
+.form-field__input:focus {
+  border-color: var(--brand-primary) !important;
+  box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.15) !important;
+  background: var(--c-overlay);
+}
+
+.form-field--error .form-field__input {
+  border-color: rgba(239, 68, 68, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+.form-field__input:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: var(--c-surface);
+}
+
+/* ----------------------------------------------------------
+   TEXTAREA ELEMENT
+   ---------------------------------------------------------- */
+
+.form-field__textarea {
+  width: 100% !important;
+  min-width: 100%;
+  box-sizing: border-box !important;
+  background: var(--c-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  padding: var(--space-3) var(--space-4);
+  outline: none;
+  resize: vertical;
+  min-height: 84px;
+  transition:
+    border-color  var(--transition-fast),
+    box-shadow    var(--transition-fast),
+    background    var(--transition-fast);
+}
+
+.form-field__textarea::placeholder {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.form-field__textarea:hover:not(:disabled) {
+  border-color: var(--border-strong);
+}
+
+.form-field__textarea:focus {
+  border-color: var(--brand-primary) !important;
+  box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.15) !important;
+  background: var(--c-overlay);
+}
+
+.form-field--error .form-field__textarea {
+  border-color: rgba(239, 68, 68, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+.form-field__textarea:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

@@ -1,0 +1,68 @@
+/* ============================================================
+   PITCH DEBRIEF PAGE
+   Investor-specific analytics, red flags, and weak answers
+   ============================================================ */
+
+.pitch-weak-answers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.weak-answer {
+  padding: var(--space-4);
+  background: var(--c-elevated);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.weak-answer__question {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.weak-answer__answer {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0;
+  border-left: 2px solid var(--border-strong);
+  padding-left: var(--space-3);
+}
+
+.weak-answer__feedback {
+  font-size: var(--text-xs);
+  color: var(--text-danger);
+  margin: 0;
+  line-height: var(--leading-relaxed);
+  background: var(--status-danger-dim);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(239, 68, 68, 0.20);
+}
+
+.pitch-red-flags ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.pitch-red-flag-item {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  padding-left: var(--space-4);
+  position: relative;
+  line-height: var(--leading-relaxed);
+}
+
+.pitch-red-flag-item::before {
+  content: '⚠️';
+  position: absolute;
+  left: 0;
+  font-size: 11px;
+}

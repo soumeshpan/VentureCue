@@ -1,0 +1,66 @@
+/* ============================================================
+   PITCH SETUP WIZARD STYLES
+   ============================================================ */
+
+.pitch-upload-area {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--c-elevated);
+  border: 1.5px dashed var(--border-default);
+  border-radius: var(--radius-lg);
+  box-sizing: border-box;
+  width: 100%;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.pitch-upload-area:hover {
+  border-color: var(--brand-violet);
+  background: var(--c-overlay);
+}
+
+.pitch-upload-area__icon {
+  color: var(--brand-violet);
+  flex-shrink: 0;
+}
+
+.pitch-upload-area__info {
+  flex: 1;
+}
+
+.pitch-upload-area__title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  margin: 0 0 2px;
+}
+
+.pitch-upload-area__sub {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.pitch-upload-area__btn {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.pitch-upload-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(124, 77, 255, 0.08);
+  border: 1px solid rgba(124, 77, 255, 0.25);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-xs);
+  color: #c4b5fd;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pitch-upload-badge strong {
+  color: #ffffff;
+}

@@ -1,0 +1,61 @@
+/* ============================================================
+   AUTH LAYOUT
+   Centered authentication container with subtle ambient glow
+   ============================================================ */
+
+.auth-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  gap: var(--space-6);
+  background: radial-gradient(ellipse 70% 45% at 50% -10%, rgba(79, 124, 255, 0.09) 0%, var(--c-base) 70%);
+  position: relative;
+}
+
+.auth-layout__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.auth-layout__logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4f7cff 0%, #7c4dff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 2px 16px rgba(79, 124, 255, 0.3);
+}
+
+.auth-layout__brand-name {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-tight);
+}
+
+.auth-layout__card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--c-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-lg);
+  animation: fadeInUp 0.35s ease forwards;
+}
+
+.auth-layout__footer {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-style: italic;
+  letter-spacing: -0.01em;
+}

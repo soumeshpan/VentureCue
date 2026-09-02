@@ -1,0 +1,208 @@
+/* ============================================================
+   PITCH ANALYSIS PAGE
+   Pre-simulation investor focus preview
+   ============================================================ */
+
+.analysis-page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: var(--space-10) var(--space-8);
+  width: 100%;
+}
+
+.analysis-page__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.analysis-page__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.analysis-page__title {
+  font-size: var(--text-3xl);
+  margin: var(--space-1) 0 0;
+}
+
+.analysis-page__subtitle {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: var(--leading-relaxed);
+}
+
+.analysis-page__subtitle strong {
+  color: var(--text-primary);
+}
+
+/* ----------------------------------------------------------
+   ANALYSIS GRID
+   ---------------------------------------------------------- */
+
+.analysis-page__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+.analysis-section__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.analysis-section__header h2 {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.analysis-icon--success { color: var(--status-success); }
+.analysis-icon--warning { color: var(--status-warning); }
+.analysis-icon--info    { color: var(--status-info); }
+.analysis-icon--brand   { color: var(--brand-primary); }
+
+.analysis-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ----------------------------------------------------------
+   ANALYSIS ITEMS
+   ---------------------------------------------------------- */
+
+.analysis-item {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.analysis-item--success {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.20);
+}
+
+.analysis-item--high {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.20);
+}
+
+.analysis-item--medium {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.20);
+}
+
+.analysis-item--low {
+  background: var(--c-elevated);
+  border-color: var(--border-subtle);
+}
+
+.analysis-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.analysis-item__area {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.analysis-item__desc {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
+   BULLET LISTS
+   ---------------------------------------------------------- */
+
+.analysis-section__bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.analysis-section__bullet-list li {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  padding-left: var(--space-3);
+  position: relative;
+  line-height: var(--leading-relaxed);
+}
+
+.analysis-section__bullet-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--brand-primary);
+}
+
+/* ----------------------------------------------------------
+   CLAIMS CALLOUT
+   ---------------------------------------------------------- */
+
+.analysis-page__claims {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: var(--c-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.analysis-claims__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.analysis-claims__sub {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin: -var(--space-2) 0 0;
+}
+
+/* ----------------------------------------------------------
+   START ACTION
+   ---------------------------------------------------------- */
+
+.analysis-page__start {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.analysis-page__start-note {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .analysis-page__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .analysis-page {
+    padding: var(--space-6) var(--space-4);
+  }
+}

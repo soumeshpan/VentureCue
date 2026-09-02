@@ -1,0 +1,63 @@
+/* ============================================================
+   RESPONSIBLE AI TRUST & PROVENANCE BADGES STYLES
+   ============================================================ */
+
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.trust-badge--sm {
+  font-size: 10px;
+  padding: 2px 7px;
+  gap: 4px;
+}
+
+.trust-badge__icon {
+  flex-shrink: 0;
+}
+
+.trust-badge--ai {
+  background: rgba(79, 124, 255, 0.12);
+  color: var(--brand-primary);
+  border: 1px solid rgba(79, 124, 255, 0.3);
+}
+
+.trust-badge--reviewed {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--status-success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.trust-badge--edited {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--status-warning);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.trust-badge--rejected {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--status-danger);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.trust-badge--sim-cust {
+  background: rgba(124, 77, 255, 0.12);
+  color: var(--brand-violet);
+  border: 1px solid rgba(124, 77, 255, 0.3);
+}
+
+.trust-badge--sim-inv {
+  background: rgba(0, 203, 168, 0.12);
+  color: var(--brand-secondary);
+  border: 1px solid rgba(0, 203, 168, 0.3);
+}

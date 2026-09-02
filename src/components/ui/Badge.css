@@ -1,0 +1,100 @@
+/* ============================================================
+   BADGE COMPONENT
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* ----------------------------------------------------------
+   SIZES
+   ---------------------------------------------------------- */
+
+.badge--sm {
+  font-size: 10px;
+  padding: 3px 8px;
+  letter-spacing: 0.06em;
+}
+
+.badge--md {
+  font-size: var(--text-xs);
+  padding: 4px 10px;
+}
+
+.badge--lg {
+  font-size: var(--text-sm);
+  padding: 5px 12px;
+}
+
+/* ----------------------------------------------------------
+   VARIANTS
+   ---------------------------------------------------------- */
+
+.badge--default {
+  background: var(--c-elevated);
+  color: var(--text-secondary);
+  border-color: var(--border-default);
+}
+
+.badge--discovery {
+  background: rgba(0, 203, 168, 0.10);
+  color: var(--brand-secondary);
+  border-color: rgba(0, 203, 168, 0.20);
+}
+
+.badge--pitch {
+  background: rgba(124, 77, 255, 0.10);
+  color: #a47eff;
+  border-color: rgba(124, 77, 255, 0.20);
+}
+
+.badge--success {
+  background: var(--status-success-dim);
+  color: var(--text-success);
+  border-color: rgba(16, 185, 129, 0.20);
+}
+
+.badge--warning {
+  background: var(--status-warning-dim);
+  color: var(--text-warning);
+  border-color: rgba(245, 158, 11, 0.20);
+}
+
+.badge--danger {
+  background: var(--status-danger-dim);
+  color: var(--text-danger);
+  border-color: rgba(239, 68, 68, 0.20);
+}
+
+.badge--brand {
+  background: var(--brand-primary-dim);
+  color: var(--text-brand);
+  border-color: rgba(79, 124, 255, 0.20);
+}
+
+.badge--live {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.20);
+}
+
+/* Dot indicator for live badge */
+.badge--live::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-full);
+  background: currentColor;
+  display: inline-block;
+  animation: glowPulse 1.5s ease-in-out infinite;
+}

@@ -1,0 +1,117 @@
+/* ============================================================
+   SETTINGS PAGE
+   Profile, audio hardware, account, and danger zone
+   ============================================================ */
+
+.settings-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-10) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 100%;
+}
+
+.settings-page__header h1 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-1);
+}
+
+.settings-page__header p {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.settings-section__title {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.settings-section__title--danger {
+  color: var(--text-danger);
+}
+
+.settings-section__desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0 0 var(--space-4);
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.settings-account {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.settings-account__name {
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  margin: 0 0 2px;
+}
+
+.settings-account__email {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.settings-danger-card {
+  border-color: rgba(239, 68, 68, 0.20) !important;
+  background: rgba(239, 68, 68, 0.03) !important;
+}
+
+.settings-danger-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.settings-danger-row__label {
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-1);
+}
+
+.settings-danger-row__desc {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin: 0;
+  line-height: var(--leading-relaxed);
+  max-width: 420px;
+}
+
+@media (max-width: 640px) {
+  .settings-page {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .settings-danger-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .settings-danger-row .btn {
+    width: 100%;
+  }
+}

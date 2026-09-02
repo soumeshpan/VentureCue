@@ -1,0 +1,331 @@
+/* ============================================================
+   AUTHENTICATED DASHBOARD STYLES
+   Calm, functional, founder-focused overview
+   ============================================================ */
+
+.dashboard {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-10) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 100%;
+}
+
+/* ----------------------------------------------------------
+   GREETING HEADER
+   ---------------------------------------------------------- */
+
+.dashboard__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.dashboard__greeting {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.dashboard__subtitle {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: var(--leading-relaxed);
+}
+
+/* ----------------------------------------------------------
+   SECTION HEADERS
+   ---------------------------------------------------------- */
+
+.dashboard__section-title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.dashboard__section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+/* ----------------------------------------------------------
+   PRIMARY MODULE CARDS (DISCOVERY & PITCH)
+   ---------------------------------------------------------- */
+
+.dashboard__module-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin-top: var(--space-4);
+}
+
+.dashboard__module-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background: var(--c-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  position: relative;
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.dashboard__module-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.dashboard__module-card--discovery:hover {
+  border-color: rgba(0, 203, 168, 0.4);
+}
+
+.dashboard__module-card--pitch:hover {
+  border-color: rgba(124, 77, 255, 0.4);
+}
+
+.dashboard__module-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard__module-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard__module-icon--discovery {
+  background: rgba(0, 203, 168, 0.12);
+  color: var(--brand-secondary);
+}
+
+.dashboard__module-icon--pitch {
+  background: rgba(124, 77, 255, 0.12);
+  color: #a47eff;
+}
+
+.dashboard__module-content {
+  flex: 1;
+}
+
+.dashboard__module-content h3 {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--space-1);
+}
+
+.dashboard__module-content > p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-3);
+  line-height: var(--leading-relaxed);
+}
+
+.dashboard__module-hints {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.dashboard__module-hints li {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  padding-left: var(--space-3);
+  position: relative;
+  line-height: var(--leading-relaxed);
+}
+
+.dashboard__module-hints li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--brand-primary);
+}
+
+/* ----------------------------------------------------------
+   RECENT SESSIONS LIST
+   ---------------------------------------------------------- */
+
+.dashboard__session-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.dashboard__session-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--c-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.dashboard__session-row:hover {
+  background: var(--c-elevated);
+  border-color: var(--border-default);
+}
+
+.dashboard__session-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex: 1;
+  min-width: 0;
+}
+
+.dashboard__session-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.dashboard__session-persona-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.dashboard__session-persona {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.dashboard__session-diff-badge {
+  font-size: 9px;
+  font-weight: var(--weight-bold);
+  color: var(--text-muted);
+  background: var(--c-overlay);
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+}
+
+.dashboard__session-meta {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.dashboard__session-weakness-tag {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.dashboard__session-weakness-tag strong {
+  color: var(--text-muted);
+}
+
+.dashboard__session-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-shrink: 0;
+}
+
+.dashboard__session-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ----------------------------------------------------------
+   INSIGHT / COACHING TEASER
+   ---------------------------------------------------------- */
+
+.dashboard__insight-card {
+  padding: var(--space-5);
+}
+
+.dashboard__insight-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.dashboard__insight-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: rgba(79, 124, 255, 0.15);
+  color: var(--brand-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.dashboard__insight-text {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: var(--leading-relaxed);
+  margin: 0 0 var(--space-3);
+}
+
+.dashboard__insight-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.dashboard__insight-footer strong {
+  color: var(--brand-primary-light);
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+   ---------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: var(--space-6) var(--space-4);
+    gap: var(--space-6);
+  }
+
+  .dashboard__module-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard__session-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard__session-right {
+    width: 100%;
+    justify-content: space-between;
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .dashboard__insight-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard__insight-footer .btn {
+    width: 100%;
+  }
+}

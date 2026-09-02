@@ -1,0 +1,380 @@
+/* ============================================================
+   CONVERSATION SESSION SCREEN STYLES
+   Immersive face-to-face practice stage
+   ============================================================ */
+
+.session-page {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: var(--space-6);
+  min-height: calc(100vh - var(--header-height, 56px));
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-8);
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ----------------------------------------------------------
+   LEFT: AVATAR STAGE COLUMN
+   ---------------------------------------------------------- */
+
+.session-page__avatar-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+  width: 100%;
+}
+
+.session-page__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-1);
+}
+
+.session-page__persona-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.session-page__persona-name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+}
+
+.session-page__difficulty-tag {
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  color: var(--brand-primary-light);
+  background: rgba(79, 124, 255, 0.12);
+  border: 1px solid rgba(79, 124, 255, 0.25);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.session-page__timer {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+  background: var(--c-surface);
+  border: 1px solid var(--border-default);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+/* Simulation Transparency Banner */
+.session-simulation-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 6px var(--space-4);
+  font-size: 11px;
+}
+
+.session-simulation-text {
+  color: var(--text-secondary);
+  flex: 1;
+  line-height: var(--leading-snug);
+}
+
+.session-rai-link {
+  background: transparent;
+  border: none;
+  color: var(--brand-primary-light);
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.session-rai-link:hover {
+  color: #ffffff;
+}
+
+/* Objective Banner */
+.session-objective-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: rgba(79, 124, 255, 0.08);
+  border: 1px solid rgba(79, 124, 255, 0.2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--text-primary);
+  line-height: var(--leading-snug);
+}
+
+.session-objective-banner svg {
+  color: var(--brand-primary-light);
+  flex-shrink: 0;
+}
+
+.session-objective-banner strong {
+  color: var(--brand-primary-light);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-right: 4px;
+}
+
+/* Avatar Stage Placement */
+.session-page__stage {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Controls */
+.session-page__controls {
+  width: 100%;
+}
+
+.session-page__end {
+  display: flex;
+  justify-content: center;
+  padding-bottom: var(--space-4);
+}
+
+/* ----------------------------------------------------------
+   RIGHT: LIVE TRANSCRIPT COLUMN
+   ---------------------------------------------------------- */
+
+.session-page__transcript-col {
+  display: flex;
+  flex-direction: column;
+  background: var(--c-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2xl);
+  height: calc(100vh - var(--header-height, 56px) - var(--space-10));
+  max-height: 860px;
+  min-height: 480px;
+  position: sticky;
+  top: var(--space-5);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.session-page__transcript-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+.session-page__transcript-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--status-success);
+  font-size: 10px;
+}
+
+.session-page__transcript-live::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--status-success);
+  box-shadow: 0 0 6px var(--status-success);
+}
+
+.session-page__transcript-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4);
+}
+
+/* ----------------------------------------------------------
+   CONFIRMATION MODAL
+   ---------------------------------------------------------- */
+
+.session-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 12, 18, 0.82);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  padding: var(--space-6);
+}
+
+.session-modal-card {
+  background: var(--c-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  max-width: 480px;
+  width: 100%;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+}
+
+.session-modal-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--status-danger);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.session-modal-card h2 {
+  font-size: var(--text-xl);
+  margin: 0;
+}
+
+.session-modal-card p {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.session-modal-actions {
+  display: flex;
+  gap: var(--space-3);
+  width: 100%;
+  margin-top: var(--space-2);
+}
+
+.session-modal-actions .btn {
+  flex: 1;
+}
+
+/* ----------------------------------------------------------
+   ANALYZING OVERLAY
+   ---------------------------------------------------------- */
+
+.session-ending-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 12, 18, 0.88);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  padding: var(--space-6);
+}
+
+.session-ending-card {
+  background: var(--c-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-10) var(--space-8);
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.session-ending-spinner {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  border: 3px solid rgba(79, 124, 255, 0.2);
+  border-top-color: var(--brand-primary);
+  animation: spin 0.8s linear infinite;
+}
+
+.session-ending-card h2 {
+  font-size: var(--text-xl);
+  margin: 0;
+}
+
+.session-ending-phase {
+  font-size: var(--text-sm);
+  color: var(--brand-primary-light);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVE
+   ---------------------------------------------------------- */
+
+@media (max-width: 1200px) {
+  .session-page {
+    grid-template-columns: 1fr 340px;
+    padding: var(--space-4) var(--space-6);
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 1024px) {
+  .session-page {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: var(--space-4);
+    gap: var(--space-5);
+  }
+
+  .session-page__transcript-col {
+    position: static;
+    height: 440px;
+    max-height: none;
+    min-height: 340px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .session-page {
+    padding: var(--space-3);
+    gap: var(--space-4);
+  }
+
+  .session-page__meta {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .session-simulation-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .session-page__transcript-col {
+    height: 380px;
+  }
+}

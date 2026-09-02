@@ -1,0 +1,192 @@
+/* ============================================================
+   AVATAR STAGE COMPONENT
+   The central visual of the realtime conversation screen
+   ============================================================ */
+
+.avatar-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+/* ----------------------------------------------------------
+   AVATAR RING
+   Large circular frame with state-specific animation
+   ---------------------------------------------------------- */
+
+.avatar-stage__ring {
+  width: 180px;
+  height: 180px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: box-shadow var(--transition-slow);
+}
+
+/* State-specific ring animations */
+.avatar-stage__ring--idle {
+  animation: avatarPulse 4s ease-in-out infinite;
+}
+
+.avatar-stage__ring--listening {
+  animation: avatarListening 2s ease-in-out infinite;
+}
+
+.avatar-stage__ring--thinking {
+  animation: avatarThinking 1.2s ease-in-out infinite;
+}
+
+.avatar-stage__ring--speaking {
+  animation: avatarSpeaking 0.9s ease-in-out infinite;
+}
+
+.avatar-stage__ring--error {
+  box-shadow: var(--avatar-error-ring) 0 0 0 2px, var(--avatar-error-glow) 0 0 40px;
+}
+
+/* ----------------------------------------------------------
+   AVATAR FACE (inner circle)
+   ---------------------------------------------------------- */
+
+.avatar-stage__face {
+  width: 140px;
+  height: 140px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    145deg,
+    var(--c-overlay) 0%,
+    var(--c-elevated) 100%
+  );
+  border: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Subtle inner sheen */
+.avatar-stage__face::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.04) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.avatar-stage__initials {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  color: var(--text-muted);
+  user-select: none;
+  letter-spacing: -0.02em;
+}
+
+/* ----------------------------------------------------------
+   WAVEFORM (speaking/listening)
+   ---------------------------------------------------------- */
+
+.avatar-stage__waveform {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 20px;
+}
+
+.avatar-stage__wave-bar {
+  width: 3px;
+  border-radius: var(--radius-full);
+  transform-origin: center bottom;
+  animation: waveBar 0.8s ease-in-out infinite;
+}
+
+.avatar-stage__wave-bar:nth-child(1) { animation-delay: 0.00s; }
+.avatar-stage__wave-bar:nth-child(2) { animation-delay: 0.08s; }
+.avatar-stage__wave-bar:nth-child(3) { animation-delay: 0.16s; }
+.avatar-stage__wave-bar:nth-child(4) { animation-delay: 0.24s; }
+.avatar-stage__wave-bar:nth-child(5) { animation-delay: 0.32s; }
+.avatar-stage__wave-bar:nth-child(6) { animation-delay: 0.24s; }
+.avatar-stage__wave-bar:nth-child(7) { animation-delay: 0.16s; }
+.avatar-stage__wave-bar:nth-child(8) { animation-delay: 0.08s; }
+.avatar-stage__wave-bar:nth-child(9) { animation-delay: 0.00s; }
+
+/* Bar heights/colors per state */
+.avatar-stage__ring--listening  + .avatar-stage__status .avatar-stage__waveform,
+.avatar-stage__ring--speaking   + .avatar-stage__status .avatar-stage__waveform {
+  display: flex;
+}
+
+/* ----------------------------------------------------------
+   STATUS ROW
+   ---------------------------------------------------------- */
+
+.avatar-stage__status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.avatar-stage__status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  transition: background var(--transition-base);
+}
+
+.avatar-stage__status-dot--idle      { background: var(--text-muted); }
+.avatar-stage__status-dot--listening { background: var(--brand-secondary); }
+.avatar-stage__status-dot--thinking  { background: var(--status-warning); }
+.avatar-stage__status-dot--speaking  { background: var(--brand-primary); }
+.avatar-stage__status-dot--error     { background: var(--status-danger); }
+
+.avatar-stage__status-label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ----------------------------------------------------------
+   THINKING DOTS
+   ---------------------------------------------------------- */
+
+.avatar-stage__thinking-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: var(--space-1);
+}
+
+.avatar-stage__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: var(--status-warning);
+  animation: dotBounce 1s ease-in-out infinite;
+}
+
+/* ----------------------------------------------------------
+   ERROR HINT
+   ---------------------------------------------------------- */
+
+.avatar-stage__error-hint {
+  font-size: var(--text-sm);
+  color: var(--text-danger);
+  text-align: center;
+  max-width: 280px;
+  line-height: var(--leading-relaxed);
+  padding: var(--space-3) var(--space-4);
+  background: var(--status-danger-dim);
+  border: 1px solid rgba(239, 68, 68, 0.20);
+  border-radius: var(--radius-md);
+}

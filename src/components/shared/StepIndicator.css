@@ -1,0 +1,126 @@
+/* ============================================================
+   STEP INDICATOR COMPONENT STYLES
+   Numbered wizard progress stepper with check states
+   ============================================================ */
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ----------------------------------------------------------
+   STEP ITEM
+   ---------------------------------------------------------- */
+
+.step-indicator__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+/* ----------------------------------------------------------
+   CONNECTOR LINE
+   ---------------------------------------------------------- */
+
+.step-indicator__connector {
+  flex: 1;
+  height: 2px;
+  background: var(--border-default);
+  margin: 0 var(--space-2);
+  min-width: 16px;
+  border-radius: var(--radius-full);
+  transition: background var(--transition-slow);
+}
+
+.step-indicator__connector--completed {
+  background: var(--brand-primary) !important;
+}
+
+/* ----------------------------------------------------------
+   STEP BUBBLE
+   ---------------------------------------------------------- */
+
+.step-indicator__bubble {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  flex-shrink: 0;
+  border: 1.5px solid var(--border-default);
+  background: var(--c-elevated);
+  color: var(--text-muted);
+  transition:
+    background      var(--transition-base),
+    border-color    var(--transition-base),
+    color           var(--transition-base),
+    box-shadow      var(--transition-base);
+}
+
+/* Active Highlight */
+.step-indicator__item--active .step-indicator__bubble {
+  background: rgba(79, 124, 255, 0.15);
+  border-color: var(--brand-primary);
+  color: var(--brand-primary-light);
+  box-shadow: 0 0 0 3px rgba(79, 124, 255, 0.18), 0 0 16px rgba(79, 124, 255, 0.25);
+}
+
+/* Completed State with check */
+.step-indicator__item--completed .step-indicator__bubble {
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: #ffffff;
+}
+
+/* Future / Muted */
+.step-indicator__item--future .step-indicator__bubble {
+  opacity: 0.6;
+}
+
+/* ----------------------------------------------------------
+   STEP TEXT
+   ---------------------------------------------------------- */
+
+.step-indicator__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-indicator__label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--text-muted);
+  white-space: nowrap;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  transition: color var(--transition-base);
+}
+
+.step-indicator__item--active .step-indicator__label {
+  color: var(--text-primary);
+  font-weight: var(--weight-bold);
+}
+
+.step-indicator__item--completed .step-indicator__label {
+  color: var(--text-secondary);
+}
+
+.step-indicator__desc {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* Hide labels on small mobile screens */
+@media (max-width: 540px) {
+  .step-indicator__text {
+    display: none;
+  }
+}
