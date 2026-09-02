@@ -404,18 +404,21 @@ export function runE2EIntegrationTests(): { passed: boolean; results: string[] }
   }
 
   // -------------------------------------------------------------
-  // TEST 16 — NVIDIA NIM Provider Integration & Key Masking
+  // TEST 16 — Server-Side NVIDIA NIM Proxy Integration & Isolation
   // -------------------------------------------------------------
   try {
-    NvidiaNimService.setApiKey('nvapi-testkey1234567890');
+    process.env.NVIDIA_API_KEY = 'nvapi-testkey1234567890';
     const isConfigured = NvidiaNimService.isConfigured();
-    const masked = NvidiaNimService.maskApiKey('nvapi-testkey1234567890');
-    const isMaskedProperly = masked.startsWith('nvapi-') && masked.includes('••••••••••••') && masked.endsWith('7890');
-    NvidiaNimService.setApiKey(''); // Reset after test
+    const model = NvidiaNimService.getModel();
+    delete process.env.NVIDIA_API_KEY; // Reset after test
 
-    logResult('TEST 16 (NVIDIA NIM Provider Integration)', isConfigured && isMaskedProperly, 'NVIDIA NIM provider active with secure key masking');
+    logResult(
+      'TEST 16 (Server-Side NVIDIA NIM Integration)',
+      isConfigured && !!model,
+      'Server proxy reads NVIDIA_API_KEY without client-side key storage'
+    );
   } catch (err: any) {
-    logResult('TEST 16 (NVIDIA NIM Provider Integration)', false, err.message);
+    logResult('TEST 16 (Server-Side NVIDIA NIM Integration)', false, err.message);
   }
 
   return { passed: allPassed, results };

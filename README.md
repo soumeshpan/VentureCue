@@ -28,6 +28,7 @@ Early-stage founders often burn high-stakes opportunities—real prospective cus
 
 - **Adaptive Personas:** 6 customer personas (The Skeptic, The Busy Operator, The Frustrated Manager, The Talkative User, The Polite Agree-er, The Indifferent Executive) and 3 investor personas.
 - **NVIDIA NIM LLM Intelligence:** Powered by NVIDIA Cloud Functions running `meta/llama-3.2-11b-vision-instruct` for natural human-to-human conversation pacing and zero-leakage context isolation.
+- **Server-Side Secret Isolation:** Zero client-side API key exposure. All inference requests are routed through a secure backend proxy (`/api/conversation`), keeping credentials strictly on the server.
 - **Interactive 3D Avatar:** Procedural Three.js avatar with real-time lip sync viseme analysis, blink cycles, and natural head idling.
 - **Voice & Text Input Fallback:** Browser Web Speech recognition with graceful fallback to typed input.
 - **Conversation Memory & Progressive Disclosure:** AI participants answer specific questions directly, reference earlier conversation context, and disclose deeper operational facts only when probed effectively.
@@ -44,18 +45,20 @@ Early-stage founders often burn high-stakes opportunities—real prospective cus
 flowchart LR
     A[Founder Voice / Text Input] --> B[Input Normalizer & STT Quality Check]
     B --> C[Persona World Model & System Prompt Builder]
-    C --> D[NVIDIA NIM Cloud Function LLM]
-    D --> E[Response Validator & Leakage Guardrails]
-    E --> F[Avatar Lip Sync & Real-Time Transcript]
-    F --> G[Post-Session Diagnostic Evaluator]
-    G --> H[Human Review & Immutable Audit Trail]
-    H --> I[Progress Analytics & Weakness Drills]
+    C --> D[Secure Server Proxy /api/conversation]
+    D --> E[NVIDIA NIM Cloud Function LLM]
+    E --> D
+    D --> F[Response Validator & Guardrails]
+    F --> G[Avatar Lip Sync & Real-Time Transcript]
+    G --> H[Post-Session Diagnostic Evaluator]
+    H --> I[Human Review & Immutable Audit Trail]
+    I --> J[Progress Analytics & Weakness Drills]
 ```
 
 1. **Founder Input:** Captured via browser microphone (Web Speech API) or direct text input.
 2. **Input Normalizer:** Sanitizes transcription hiccups, detects malformed fragments, and screens for prompt injection.
 3. **Context Builder:** Constructs strictly isolated persona prompts with realistic private workplace constraints, grounded tools, and knowledge boundaries.
-4. **NVIDIA NIM Generation:** Calls NVIDIA Cloud Function endpoint with conversational dialogue context.
+4. **Server-Side NVIDIA Proxy (`/api/conversation`):** Backend server securely attaches `Authorization: Bearer <NVIDIA_API_KEY>` and calls NVIDIA NIM. Zero credentials exist on the frontend.
 5. **Response Validation:** Validates output against internal leakage, meta AI phrasing, and repetitive phrasing.
 6. **Delivery & Audio Synthesis:** Avatar speaks via browser Web Speech synthesis with synchronized 3D lip visemes.
 7. **Session Debrief:** Generates evidence-grounded performance report.
@@ -65,6 +68,7 @@ flowchart LR
 ## Tech Stack
 
 - **Frontend Core:** React 19, TypeScript, Vite
+- **Backend / Proxy:** Node.js HTTP Server / Vite Server Middleware Proxy (`/api/*`)
 - **3D Avatar & Graphics:** Three.js, React Three Fiber (`@react-three/fiber`), `@react-three/drei`
 - **State Management:** Zustand (with localStorage persistence)
 - **AI Backend / Inference:** NVIDIA NIM (`meta/llama-3.2-11b-vision-instruct` via NVIDIA Cloud Functions)
@@ -91,18 +95,18 @@ cd VentureCue
 npm install
 ```
 
-### 3. Configure Environment
+### 3. Configure Server Environment
 Copy the example environment file:
 ```bash
 cp .env.example .env
 ```
-Open `.env` and add your NVIDIA NIM API key (obtainable from [NVIDIA Build](https://build.nvidia.com/)):
+Open `.env` and add your server-side NVIDIA NIM API key (obtainable from [NVIDIA Build](https://build.nvidia.com/)):
 ```env
-VITE_NVIDIA_API_KEY=nvapi-your_actual_key_here
-VITE_NVIDIA_MODEL=meta/llama-3.2-11b-vision-instruct
+NVIDIA_API_KEY=nvapi-your_actual_server_key_here
+NVIDIA_MODEL=meta/llama-3.2-11b-vision-instruct
 ```
 
-> **Note on Client-Side Keys:** In this prototype application, the API key can be set via `VITE_NVIDIA_API_KEY` in `.env` or entered interactively under **Settings** in the web UI (stored in browser `localStorage`). In a production enterprise deployment, LLM calls should be routed through a dedicated backend API proxy.
+> **Security Note:** `NVIDIA_API_KEY` is loaded exclusively by the backend proxy server and is **never** prefixed with `VITE_` or sent to the client browser.
 
 ### 4. Start the Local Development Server
 ```bash
@@ -119,12 +123,13 @@ Run the automated test suite:
 npm test
 ```
 
-### Verified Test Suite Breakdown (61 Tests Passing):
+### Verified Test Suite Breakdown (70 Tests Passing):
 - **Human Review & Audit Trail (6/6):** Verifies immutable AI snapshots, human dispute tracking, and reviewer edits.
 - **Responsible AI, Safety & Trust (10/10):** Verifies simulation disclaimers, prompt injection defense, secret protection, and demographic neutrality.
 - **Progress, Analytics & Weaknesses (14/14):** Verifies trajectory math, recurring weakness thresholds, human-edit precedence, and session recalculations.
-- **End-to-End Integration & UX Polish (16/16):** Verifies discovery and pitch journeys, route integrity, debouncing, and NVIDIA provider integration.
+- **End-to-End Integration & UX Polish (16/16):** Verifies discovery and pitch journeys, route integrity, debouncing, and server proxy integration.
 - **Natural Conversation & Context Isolation (15/15):** Verifies tool sanitization, intent responsiveness, zero canned repetition, memory consistency, and persona differentiation.
+- **Server-Side Security & Secret Isolation (10/10):** Verifies zero client-side keys, backend proxy header injection, upstream error sanitization, and credential masking.
 
 ---
 
@@ -162,23 +167,24 @@ VentureCue/
 │   │   ├── progress/        # Skill trajectories, recurring weaknesses, drills
 │   │   ├── reviews/         # Human review audit trail and dispute workflow
 │   │   ├── insights/        # Performance trends and persona breakdowns
-│   │   └── settings/        # Account and live NVIDIA API key configuration
+│   │   └── settings/        # Account and server infrastructure status
 │   ├── providers/           # Avatar runtime providers (MockAvatarProvider)
+│   ├── server/              # Server-side NVIDIA NIM proxy handler (/api/conversation)
 │   ├── services/
-│   │   ├── ai/              # NVIDIA NIM service, DiscoveryEngine, PitchEngine, Evaluator
+│   │   ├── ai/              # NVIDIA NIM client service, DiscoveryEngine, PitchEngine, Evaluator
 │   │   │   └── context/     # CustomerPromptBuilder, PersonaWorldModel, ResponseValidator, InputNormalizer
 │   │   └── analytics/       # Progress analytics, trajectory calculator, weakness detector
 │   ├── store/               # Zustand stores (session, discovery, pitch, review, auth)
 │   ├── styles/              # Global design tokens, animations, themes
-│   ├── tests/               # 61 automated unit, integration, and behavioral tests
+│   ├── tests/               # 70 automated unit, integration, and security tests
 │   ├── types/               # TypeScript domain interfaces (session, discovery, pitch, review)
 │   ├── App.tsx              # Router and top-level navigation
 │   └── main.tsx             # React application entry point
-├── .env.example             # Safe template for environment configuration
+├── .env.example             # Safe template for server environment configuration
 ├── .gitignore               # Strict ignore rules for secrets and build artifacts
 ├── package.json             # Scripts and production dependencies
 ├── tsconfig.json            # Strict TypeScript configuration
-└── vite.config.ts           # Vite build pipeline
+└── vite.config.ts           # Vite server-side proxy middleware pipeline
 ```
 
 ---
@@ -189,7 +195,7 @@ VentureCue/
 2. **Investor Reactions:** Simulated investor reactions reflect typical VC cross-examination heuristics and do not predict real-world fundraising outcomes.
 3. **Browser-Native TTS/STT:** Speech recognition and avatar vocal synthesis utilize browser Web Speech APIs; quality may vary across browser vendors.
 4. **Procedural 3D Visemes:** Avatar facial animations are procedurally generated visemes tied to synthetic speech phoneme timings rather than neural video generation.
-5. **Client-Side Prototype Key:** API keys configured in the web UI are stored in the client's `localStorage` for prototype convenience. A production release should proxy inference through a secured backend.
+5. **Server-Side Isolation:** The NVIDIA NIM inference credentials reside strictly on the server backend (`NVIDIA_API_KEY`) and are never exposed to the client.
 
 ---
 

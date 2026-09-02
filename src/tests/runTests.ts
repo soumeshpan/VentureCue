@@ -5,6 +5,7 @@ import { runResponsibleAITests } from './responsibleAI.test';
 import { runProgressAnalyticsTests } from './progressAnalytics.test';
 import { runE2EIntegrationTests } from './e2eIntegration.test';
 import { runPrompt11ConversationTests } from './prompt11Conversation.test';
+import { runServerSecurityTests } from './serverSecurity.test';
 
 console.log('\n========================================================');
 console.log('VENTURECUE — HUMAN REVIEW & AUDIT TRAIL TEST RUN');
@@ -41,8 +42,28 @@ console.log('========================================================\n');
 const p11Res = runPrompt11ConversationTests();
 p11Res.results.forEach((r) => console.log(r));
 
-const allPassed = hrRes.passed && raiRes.passed && progRes.passed && e2eRes.passed && p11Res.passed;
-const totalCount = hrRes.results.length + raiRes.results.length + progRes.results.length + e2eRes.results.length + p11Res.results.length;
+console.log('\n========================================================');
+console.log('VENTURECUE — SERVER-SIDE SECURITY & SECRET ISOLATION TEST RUN');
+console.log('========================================================\n');
+
+const secRes = runServerSecurityTests();
+secRes.results.forEach((r) => console.log(r));
+
+const allPassed =
+  hrRes.passed &&
+  raiRes.passed &&
+  progRes.passed &&
+  e2eRes.passed &&
+  p11Res.passed &&
+  secRes.passed;
+
+const totalCount =
+  hrRes.results.length +
+  raiRes.results.length +
+  progRes.results.length +
+  e2eRes.results.length +
+  p11Res.results.length +
+  secRes.results.length;
 
 console.log('\n--------------------------------------------------------');
 console.log(`TOTAL RESULT: ${allPassed ? `ALL ${totalCount} TESTS PASSED ✓` : 'TESTS FAILED ✗'}`);
@@ -51,4 +72,3 @@ console.log('--------------------------------------------------------\n');
 if (!allPassed) {
   process.exit(1);
 }
-
